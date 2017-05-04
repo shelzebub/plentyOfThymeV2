@@ -8,44 +8,105 @@
     <link rel="icon" type="image/png" href="images/potIcon.jpeg" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <style>
-    /* Nav bar */
-
-    ul {
-        font-size: 12px;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #332;
-        opacity: 0.8;
-    }
-
-    li {
-        float: left;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    li a:hover {
-        background-color: #111;
-    }
-    /* /Nav bar*/
+        /* Nav bar */
+        
+        ul {
+            font-size: 12px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #332;
+            opacity: 0.8;
+        }
+        
+        li {
+            float: left;
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover {
+            background-color: #ffffff;
+        }
+        /* /Nav bar*/
+        
+        #pie {
+            border: 1px solid gray;
+            padding: 10px 10px 10px 10px;
+            color: green;
+        }
+        
+        #bar {
+            border: 1px solid gray;
+            padding: 10px 10px 10px 10px;
+            color: green;
+        }
+        
         .center {
             text-align: center;
         }
-
-        h3 {
-            color: green;
+        /* Style the tab */
+        
+        div.tab {
+            overflow: hidden;
+            border: 1px solid #ffffff;
+            background-color: #ffffff;
+        }
+        /* Style the buttons inside the tab */
+        
+        div.tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        /* Change background color of buttons on hover */
+        
+        div.tab button:hover {
+            background-color: #ddd;
+        }
+        /* Create an active/current tablink class */
+        
+        div.tab button.active {
+            background-color: #ccc;
+        }
+        /* Style the tab content */
+        
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
         }
     </style>
     <title>Plenty of Thyme</title>
 </head>
+<script>
+    function openGraph(evt, graphType) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(graphType).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
 
 <body class="container">
     <div class="center">
@@ -59,14 +120,9 @@
                 <li><a href="contactUs.html">Contact Us</a></li>
                 <li><a href="aboutPOT.html">About PoT</a></li>
                 <li><a href="aboutus.html">About Us</a></li>
-                <button id="btnLogout" class="btn btn-action">
-              Log out
-          </button>
+                <button id="btnLogout" class="btn btn-action"> Log out </button>
                 <script src='feature/logout.js'></script>
-
             </ul>
-
-
         </div>
         <div>
             <label for="week_vw" class="btn">Week</label>
@@ -74,14 +130,19 @@
             <label for="month_vw" class="btn">Month</label>
             <label for="annual_vw" class="btn">Year</label>
         </div>
-        <div>
-            <label for="bar" class="btn">Bar</label>
-            <label for="pie" class="btn">Pie Chart</label>
+        <div class="tab">
+            <button class="tablinks" onclick="openGraph(event, 'Pie Chart')">Pie Chart</button>
+            <button class="tablinks" onclick="openGraph(event, 'Bar Graph')">Bar Graph</button>
         </div>
-        </br>
-
+        <div id="Pie Chart" class="tabcontent">
+            <h3>Pie Chart</h3>
+            <div id="pie"> PIE CHART </div>
+        </div>
+        <div id="Bar Graph" class="tabcontent">
+            <h3>Bar Graph</h3>
+            <div id="bar"> BAR GRAPH </div>
+        </div>
         <br />
-        <div>
-            <img src="images/piechart.png" alt="pie chart" style="width:304px;height:228px;">
+        <br /> </body>
 
 </html>
