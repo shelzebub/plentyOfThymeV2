@@ -27,3 +27,6 @@ hr {
     border-bottom: 1px solid gray;
 
 }
+h3, h2, {
+    color: green;
+}
